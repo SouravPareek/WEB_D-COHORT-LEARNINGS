@@ -12,7 +12,7 @@ html, body{
 
 header{
     color:aliceblue;
-    background-color: rgb(23, 38, 84);
+    background-color: #D97D55;
     text-align: center;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -55,11 +55,11 @@ header > p:last-child{
 }
 
 #edu{
-    background-color: rgb(121, 176, 224);
+    background-color: #B8C4A9;
 }
 
 #about{
-    background-color: antiquewhite;
+    background-color: #F4E9D7;
     height: 150px;
 }
 
@@ -69,12 +69,12 @@ header > p:last-child{
 }
 
 #projects{
-    background-color: rgb(225, 164, 255);
+    background-color: #6FA4AF;
     height: 250px;
 }
 
 #contact{
-    background-color:rgb(164, 255, 214);
+    background-color:#7C6A92;
     height: 250px;
 }
 
@@ -84,8 +84,8 @@ header > p:last-child{
 }
 
 footer{
-    color:aliceblue;
-    background-color: rgb(23, 38, 84);
+    color:white;
+    background-color: #D97D55;
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
