@@ -1,0 +1,93 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+header{
+    color:aliceblue;
+    background-color: rgb(23, 38, 84);
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    
+}
+
+header > p:first-child{
+    font-size: 35px;
+    font-weight: 700;
+}
+
+header > p:last-child{
+    font-size: 15px;
+    font-style: italic;
+}
+
+.box{
+    align-self: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 1000px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.minibox{
+    background-color: white;
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    line-height: 30px;
+    width: 600px;
+    height: 30px;
+}
+
+#edu{
+    background-color: rgb(121, 176, 224);
+}
+
+#about{
+    background-color: antiquewhite;
+    height: 150px;
+}
+
+#skills{
+    background-color: rgb(241, 198, 142);
+    height: 300px;
+}
+
+#projects{
+    background-color: rgb(225, 164, 255);
+    height: 300px;
+}
+
+#contact{
+    background-color:rgb(164, 255, 214);
+    height: 300px;
+}
+
+.boxHeaders{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+footer{
+    color:aliceblue;
+    background-color: rgb(23, 38, 84);
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    font-size: 15px;
+    font-style: italic;
+}
