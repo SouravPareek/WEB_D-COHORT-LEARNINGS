@@ -9,3 +9,34 @@ html, body{
     height: 100%;
     width: 100%;
 }
+
+#box1{
+    height: 100px;
+    width: 100PX;
+    background: linear-gradient(red, blue);
+    margin-bottom: 2px;
+}
+#box2{
+    height: 100px;
+    width: 100PX;
+    background: linear-gradient(to right, orange, purple, red);
+    margin-bottom: 2px;
+}
+#box3{
+    height: 100px;
+    width: 100PX;
+    background: linear-gradient(to right bottom, orange, white, green);
+    margin-bottom: 2px;
+}
+#box4{
+    height: 100px;
+    width: 100PX;
+    background: radial-gradient(yellow, red);
+    margin-bottom: 2px;
+}
+#box5{
+    height: 100px;
+    width: 100PX;
+    background: conic-gradient(violet, indigo, blue, green, yellow, orange, red, violet);
+    margin-bottom: 2px;
+}

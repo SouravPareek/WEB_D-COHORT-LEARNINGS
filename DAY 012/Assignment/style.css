@@ -1,0 +1,44 @@
+@font-face{
+    font-family: royal;
+    src: url(./BattlesbridgeDemoRegular.ttf);
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body, html{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+h1{
+    font-size: 60px;
+    font-family: royal;
+    color: rgb(179, 97, 43);
+}
+
+button{
+    margin: 20px 10px;
+    padding: 10px 20px;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    font-family:cursive;
+    background-color : #CF5F02;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+button:hover{
+    background-color: #350F00;
+    color: #CF5F02;
+    transform: scale(1.5);
+}
+
+body{
+    background-image: url(https://images.unsplash.com/photo-1507048947301-7afc2aca0edc?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: center;
+}
