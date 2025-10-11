@@ -1,0 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+    display:flex;
+}
+
+section{
+    border: 2px solid black;
+    flex-grow: 1;
+}
+
+section:hover{
+    flex-grow: 2;
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#vk{
+    background-image: url(https://i.pinimg.com/736x/04/ac/19/04ac19b7714990f2bd5d50bb8d538466.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#msd{
+    background-image: url(https://i.pinimg.com/736x/6a/7b/1f/6a7b1ff63cb3ed1ec1feafe0c3fe1f04.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#ro{
+    background-image: url(https://i.pinimg.com/736x/05/b7/c2/05b7c2a56c921537f3644cfb6b7b3a94.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#god{
+    background-image: url(https://i.pinimg.com/736x/78/6d/36/786d36eacfd5d552cb804a1810d4824f.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#sir{
+    background-image: url(https://i.pinimg.com/736x/b8/83/d6/b883d6927af57fa11b2623d4e3cb3fbd.jpg);
+    background-position: center;
+    background-size: cover;
+}
