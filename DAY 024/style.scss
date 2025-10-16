@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'Chillax';
+    src: url(./Chillax-Regular.woff);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+html{
+    font-family: 'Chillax', sans-serif;
+    font-size: clamp(14px, 1vw, 18px);
+    color: rgb(244, 244, 244)
+}
+
+body{
+    background-color: #141414;
+}
+
+@mixin flex-column($gap : 0rem){
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+section{
+    max-width: 2000px;
+}
+
+main{
+    width: 100%;
+    @include flex-column(0rem);
+    align-items: center;
+
+    section{
+        width: 100%;
+        @include flex-column(0rem);
+        padding: 1rem;
+
+        .top{
+            width: 100%;
+            img{
+                width: 100%;
+                border-radius: 0.7rem;
+            }
+        }
+
+        .bottom{
+            background-color: #1f1e1e;
+            border-radius: 0.7rem;
+            padding: 1.5rem;
+            @include flex-column(3rem);
+            
+            .text{
+                @include flex-column(0.7rem);
+
+                h1{
+                    font-size: 2.5rem;
+                    font-weight: 200;
+                    // padding-right: 4rem;
+                }
+
+                p{
+                    line-height: 2rem;
+                    font-size: 1.2rem;
+                    opacity: 0.6;
+                    font-weight: 100;
+                }
+
+                button{
+                    width: fit-content;
+                    border: none;
+                    padding: 0.7rem 1rem;
+                    border-radius: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width:900px) {
+    main {
+
+        section {
+            flex-direction: row;
+            padding: 1rem 4rem;
+
+            .top,
+            .bottom {
+                width: 50%;
+            }
+
+            .bottom {
+                justify-content: space-between;
+                padding: 3rem;
+
+                .text {
+
+                    gap: 1.5rem;
+
+                    h1 {
+                        font-size: 3.5rem;
+                    }
+
+                    p {
+                        width: 60%;
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
