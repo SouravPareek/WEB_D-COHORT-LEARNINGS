@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -52,5 +53,5 @@ section:hover {
 #sir {
   background-image: url(https://i.pinimg.com/736x/b8/83/d6/b883d6927af57fa11b2623d4e3cb3fbd.jpg);
   background-position: center;
-  background-size: cover;
-}/*# sourceMappingURL=style.css.map */
+  background-size:  cover;
+}/*# sourceMappingURL=style.css.map */
