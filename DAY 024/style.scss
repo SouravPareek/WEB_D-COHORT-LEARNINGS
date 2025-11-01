@@ -39,9 +39,9 @@ main{
     @include flex-column(0rem);
     align-items: center;
 
-    section{
+    section.view1{
         width: 100%;
-        @include flex-column(0rem);
+        @include flex-column(1rem);
         padding: 1rem;
 
         .top{
@@ -83,12 +83,30 @@ main{
             }
         }
     }
+
+    section.view2{
+        @include flex-column(1rem);
+        width: 100%;
+        padding: 1rem;
+
+        .top, .btm{
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+
+            .element{
+                h3{
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
 }
 
 @media (min-width:900px) {
     main {
 
-        section {
+        section.view1{
             flex-direction: row;
             padding: 1rem 4rem;
 
@@ -115,6 +133,10 @@ main{
                     }
                 }
             }
+        }
+
+        section.view2{
+            flex-direction: row;
         }
     }
 }
