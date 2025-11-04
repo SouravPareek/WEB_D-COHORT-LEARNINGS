@@ -114,36 +114,102 @@
 // Ques 12 Ask user for words until they type “stop”. Count how many times they typed “yes”
 // Loop until "stop" is typed. Count "yes".
 
-let cnt = 0;
-let userResponse = "yes";
-while(userResponse !== "stop"){
-    userResponse = prompt("word pls : ");
-    if(userResponse === "yes")
-        cnt += 1;
-}
+// let cnt = 0;
+// let userResponse = "yes";
+// while(userResponse !== "stop"){
+//     userResponse = prompt("word pls : ");
+//     if(userResponse === "yes")
+//         cnt += 1;
+// }
 
-console.log(cnt);
+// console.log(cnt);
 
 
 // Ques 13 Print numbers divisible by 7 from 1 to 50
 // Use modulo % and loop.
 
+// for(let i = 1; i <= 50; i++){
+//     if(i%7 === 0)
+//         console.log(i);
+// }
+
+
 // Ques 14 Sum of all odd numbers from 1 to 30
 // Add only odd numbers. Print final sum.
+
+// let sum = 0;
+// for(let i = 1; i <= 30; i++)
+//     sum += i;
+
+// console.log(sum);
+
 
 // Ques 15 Keep asking number until user enters an even number
 // Use while loop. Stop only if input is even.
 
+// let num = +prompt("ek number batao");
+
+// while(num % 2 !== 0){
+//     num = +prompt("ek number batao");
+// }
+
+
 // Ques 16 Print numbers between two user inputs
 // Input start and end using prompt() → print all between.
+
+// let start = +prompt("starting number batao");
+// let end = +prompt("ending number batao");
+
+// for(let i = start; i <= end; i++){
+//     console.log(i);
+// }
+
 
 // Ques 17 Print only first 3 odd numbers from 1 to 20
 // Use loop. Stop with break after 3 odd prints.
 
+// let cnt = 0;
+// let i = 1;
+// while(cnt < 3 && i <= 20){
+//     if(i%2 !== 0){
+//         console.log(i);
+//         cnt++;
+//     }
+//     i++;
+// }
+
+
 // Ques 18 Ask user 5 numbers. Count how many are positive
 // Use loop + condition + counter.
+
+// let cnt = 0;
+
+// for(let  i = 1; i <= 5; i++){
+//     let num = +prompt("number batao");
+//     if(num > 0)
+//         cnt += 1;
+// }
+
+// console.log(cnt);
+
 
 // Ques 19 ATM Simulator – Allow 3 withdrawals
 // Start with ₹1000 balance. Ask withdrawal amount 3 times.
 // If enough balance → deduct
 // Else → print “Insufficient balance”
+
+// let balance = 1000;
+
+// let cnt = 0;
+
+// while(cnt < 3){
+//     let withdraw = prompt("Kitne paise nikalne ha?");
+
+//     if(withdraw <= balance)
+//         balance -= withdraw;
+//     else
+//         console.log("Insufficient balance");
+
+//     cnt += 1;
+// }
+// console.log(`Remaining balance ${balance}`);
