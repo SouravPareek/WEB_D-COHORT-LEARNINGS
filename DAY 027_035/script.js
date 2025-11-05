@@ -207,8 +207,10 @@
 
 //     if(withdraw <= balance)
 //         balance -= withdraw;
-//     else
+//     else{
 //         console.log("Insufficient balance");
+//         break;
+//     }
 
 //     cnt += 1;
 // }
