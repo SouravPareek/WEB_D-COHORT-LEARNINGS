@@ -35,6 +35,14 @@ a{
     background-color: #66472D;
     border: none;
     letter-spacing: 2px;
+    display: inline-block;
+}
+
+a:hover{
+    transform: scale(1.2);
+    background-color: silver;
+    color: #66472D;
+    border: 2px solid;
 }
 
 body{
