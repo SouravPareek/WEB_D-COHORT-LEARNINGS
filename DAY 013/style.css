@@ -14,13 +14,19 @@ html, body{
     position: relative;
     width: 400px;
     height: 400px;
-    background-color: rgb(78, 18, 18);
+    background-color: rgb(223, 35, 35);
 }
 
 #small{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(54, 234, 54);
+}
+
+#inner{
     position: absolute;
-    top: 150%;
+    left: 80%;
     width: 100px;
     height: 100px;
-    background-color: rgb(96, 96, 16);
+    background-color: rgb(219, 219, 15);
 }
