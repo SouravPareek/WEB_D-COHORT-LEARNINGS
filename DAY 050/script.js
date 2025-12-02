@@ -111,76 +111,121 @@ const reels = [
   }
 ];
 
-let sum ="";
-reels.forEach((elem)=>{
-    sum = sum + `<div class="reel">
-                <video loop muted autoplay src="${elem.video}"></video>
-                <div class="right">
-                    <div class="like">
-                        ${elem.isLiked? '<i class="ri-heart-3-fill"></i>' : '<i class="ri-heart-line"></i>'}
-                        <h4>${elem.likeCount}</h4>
-                    </div>
-                    <div class="comment">
-                        <i class="ri-chat-3-line"></i>
-                        <h4>${elem.commentCount}</h4>
-                    </div>
-                    <div class="share">
-                        <i class="ri-share-forward-line"></i>
-                        <h4>${elem.shareCount}</h4>
-                    </div>
-                    <div class="menu">
-                        <i class="ri-more-2-fill"></i>
-                    </div>
-                </div>
-                <div class="btm">
-                    <div class="btm-top">
-                        <img src="${elem.userProfile}" alt="">
-                        <h3>${elem.username}</h3>
-                        <button>${elem.isFollowed? "Following" : "Follow"}</button>
-                    </div>
-                    <p class="caption">${elem.caption}</p>
-                </div>
-            </div>
-            `;
-})
-
-
 var allReels = document.querySelector('.all-reels');
 
-allReels.innerHTML = sum;
+function addData(){
+  let sum ="";
+  reels.forEach((elem, idx)=>{
+      sum = sum + `<div class="reel">
+                  <video loop muted autoplay src="${elem.video}"></video>
+                  <div class="right">
+                      <div id=${idx} class="like">
+                          ${elem.isLiked? '<i class="ri-heart-3-fill"></i>' : '<i class="ri-heart-line"></i>'}
+                          <h4>${elem.likeCount}</h4>
+                      </div>
+                      <div class="comment">
+                          <i class="ri-chat-3-line"></i>
+                          <h4>${elem.commentCount}</h4>
+                      </div>
+                      <div class="share">
+                          <i class="ri-share-forward-line"></i>
+                          <h4>${elem.shareCount}</h4>
+                      </div>
+                      <div class="menu">
+                          <i class="ri-more-2-fill"></i>
+                      </div>
+                  </div>
+                  <div class="btm">
+                      <div class="btm-top">
+                          <img src="${elem.userProfile}" alt="">
+                          <h3>${elem.username}</h3>
+                          <button id=${idx} class="Follow">${elem.isFollowed? "Following" : "Follow"}</button>
+                      </div>
+                      <p class="caption">${elem.caption}</p>
+                  </div>
+              </div>
+              `;
+  })
 
+  allReels.innerHTML = sum;
+}
+addData()
 
-var likeIcons = document.querySelectorAll('.like i');
+allReels.addEventListener('click', (dets) => {
 
-likeIcons.forEach((icon)=>{
-    var countLikes = icon.closest('.like').querySelector('h4');
-    icon.addEventListener('click', ()=>{
-        var count = Number(countLikes.textContent);
-        
-        if (icon.classList.contains('ri-heart-line')) {
-            // like
-            icon.classList.remove('ri-heart-line');
-            icon.classList.add('ri-heart-3-fill');
-            icon.style.color = 'red';
-            countLikes.textContent = count + 1;
-        } else {
-            // unlike
-            icon.classList.remove('ri-heart-3-fill');
-            icon.classList.add('ri-heart-line');
-            icon.style.color = 'white';
-            countLikes.textContent = Math.max(0, count - 1);
-        }
-    })
+  // --- FOLLOW / UNFOLLOW (mirrors your like logic) ---
+  if (dets.target.matches('.Follow, .Follow *')) {
+    // climb up until we hit the element with class "Follow"
+    let followBtn = dets.target;
+    while (followBtn && !followBtn.classList.contains('Follow')) {
+      followBtn = followBtn.parentElement;
+    }
+    if (!followBtn) return;
+
+    const idx = Number(followBtn.id);
+    // toggle follow state (proper toggle, not reassigning same value)
+    reels[idx].isFollowed = !reels[idx].isFollowed;
+
+    // re-render to reflect change
+    addData();
+    return; // stop, we handled this click
+  }
+
+  // LIKE / UNLIKE
+  if (dets.target.matches('.like, .like *')) {
+    let likeDiv = dets.target;
+    while (likeDiv && !likeDiv.classList.contains('like')) {
+      likeDiv = likeDiv.parentElement;
+    }
+    if (!likeDiv) return;
+
+    const idx = Number(likeDiv.id);
+
+    if (!reels[idx].isLiked) {
+      reels[idx].likeCount++;
+      reels[idx].isLiked = true;
+    } else {
+      reels[idx].likeCount--;
+      reels[idx].isLiked = false;
+    }
+
+    addData();
+  }
 });
 
 
-var follow = document.querySelectorAll('.btm-top button');
-follow.forEach((btn)=>{
-    btn.addEventListener('click', ()=>{
-        if(btn.innerHTML === 'Follow'){
-            btn.innerHTML = 'Following'
-        }else{
-            btn.innerHTML = 'Follow'
-        }
-    })
-})
+
+// var likeIcons = document.querySelectorAll('.like i');
+
+// likeIcons.forEach((icon)=>{
+//     var countLikes = icon.closest('.like').querySelector('h4');
+//     icon.addEventListener('click', ()=>{
+//         var count = Number(countLikes.textContent);
+        
+//         if (icon.classList.contains('ri-heart-line')) {
+//             // like
+//             icon.classList.remove('ri-heart-line');
+//             icon.classList.add('ri-heart-3-fill');
+//             icon.style.color = 'red';
+//             countLikes.textContent = count + 1;
+//         } else {
+//             // unlike
+//             icon.classList.remove('ri-heart-3-fill');
+//             icon.classList.add('ri-heart-line');
+//             icon.style.color = 'white';
+//             countLikes.textContent = count - 1;
+//         }
+//     })
+// });
+
+
+// var follow = document.querySelectorAll('.btm-top button');
+// follow.forEach((btn)=>{
+//     btn.addEventListener('click', ()=>{
+//         if(btn.innerHTML === 'Follow'){
+//             btn.innerHTML = 'Following'
+//         }else{
+//             btn.innerHTML = 'Follow'
+//         }
+//     })
+// })

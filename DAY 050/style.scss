@@ -58,6 +58,12 @@ main{
                     text-align: center;
                     overflow: hidden;
                     z-index: 5;
+                    
+                    .like{
+                        .ri-heart-3-fill{
+                            color: red;
+                        }
+                    }
 
                     i{
                         font-size: 30px;
