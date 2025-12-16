@@ -13,7 +13,7 @@ body {
     align-items: center;
 }
 
-@keyframes changebgc{
+/* @keyframes changebgc{
     from{
         background-color: white;
         border-radius: 0px;
@@ -24,6 +24,21 @@ body {
         border-radius: 50%;
         scale: 0.25;
     }
+} */
+
+@property --bgColor{
+    syntax: "<color>";
+    initial-value: white;
+    inherits: false;
+}
+
+@keyframes changebgColor{
+    from{
+        --bgColor: green;
+    }
+    to{
+        --bgColor: blue;
+    }
 }
 
 #box{
@@ -31,6 +46,6 @@ body {
     width: 400px;
     /* box-shadow: 2px 2px 40px red; */
     /* background: conic-gradient(from 180deg, white, black); */
-    border: 20px solid green;
-    animation: changebgc 5s infinite backwards alternate;
+    background-color: var(--bgColor);
+    animation: changebgColor 10s;
 }
