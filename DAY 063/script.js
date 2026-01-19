@@ -15,7 +15,7 @@
 // - Demonstrate at least one custom thrown error (e.g., `ExtremeTemperatureError`) and handle it in the UI.
     // async function getWeather(city, state) {
     // try {
-    //     let apikey = `1177f286d89961332f815170d31dc22b`;
+    //     let apikey = `--------------`;
 
     //     let raw = await fetch(
     //     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`
