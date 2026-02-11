@@ -2,10 +2,22 @@ const express = require("express")
 
 const app = express() // create instance of server
 
-app.get('/', (req, res)=>{
-    res.send("Hello there")
+app.use(express.json()) //req.body ka data padhne ke liye middleware
+
+const notes = []
+
+app.post("/notes", (req, res)=>{
+    console.log(req.body);
+    
+    notes.push(req.body)
+    res.send("Note created successfully");
+})
+
+app.get("/notes", (req, res)=>{
+    res.send(notes);
 })
 
 app.listen(3000, ()=>{
     console.log("server is running on port 3000");
+    
 })
