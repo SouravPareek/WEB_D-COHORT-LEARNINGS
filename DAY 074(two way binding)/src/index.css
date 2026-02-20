@@ -12,12 +12,36 @@ html, body{
 }
 
 form{
-    padding: 20px;
-    background-color: gray;
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    padding-top: 300px;
 }
 
-input, button{
+input{
     padding: 5px 10px;
+    width: auto;
+    height: 10%;
+    font-size: 20px;
+}
+
+button{
+    padding: 10px 20px;
+    width: auto;
+    font-size: 24px;
+    background-color: burlywood;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+button:active{
+    scale: 0.95;
+}
+
+h2{
+    color: white;
 }

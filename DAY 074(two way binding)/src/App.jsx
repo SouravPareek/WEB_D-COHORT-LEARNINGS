@@ -1,37 +1,34 @@
-import './App.css'
 import React, { useState } from 'react'
 
 const App = () => {
-    const [name, setname] = useState('');
+    const [users, setUsers] = useState([])
+    const [name, setName] = useState('')
 
-    const [allUsers, setallUsers] = useState([])
-    
-    const submitHandler = (e)=>{
+    let SubmitHandler = (e)=>{
         e.preventDefault()
-        allUsers.push(name)
-
-        setallUsers([...allUsers])
-        setname('')
-    }   
-    
+        users.push(name)
+        setUsers(users)
+        setName('')
+    }
     return (
         <div>
             <form onSubmit={(e)=>{
-                submitHandler(e)
-            }}>
+                    SubmitHandler(e)
+                }}>
                 <input
-                    type="text" 
-                    placeholder='enter'
-                    value={name}
-                    onChange={(e)=>{
-                        setname(e.target.value)
-                    }}
-                    required
+                type="text"
+                value={name}
+                placeholder='Enter your name'
+                onChange={(e)=>{
+                    setName(e.target.value)
+                }}
+                required
                 />
                 <button>Submit</button>
             </form>
-            {allUsers.map((elem, idx)=>{
-                return <h1 key={idx}>{elem}</h1>
+
+            {users.map((elem, idx)=>{
+                return <h2 key = {idx}>{elem}</h2>
             })}
         </div>
     )
