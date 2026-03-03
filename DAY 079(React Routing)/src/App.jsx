@@ -11,6 +11,7 @@ import Support from "./pages/Support";
 import NotFound from "./pages/NotFound";
 import Men from "./pages/Men";
 import Women from "./pages/Women";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="*" element={<NotFound/>} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 };
