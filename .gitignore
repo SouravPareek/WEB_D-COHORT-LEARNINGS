@@ -1,8 +1,0 @@
-# Node dependencies (ignore everywhere)
-node_modules/
-
-# Environment variables (ignore everywhere)
-.env
-
-# Logs
-npm-debug.log*
