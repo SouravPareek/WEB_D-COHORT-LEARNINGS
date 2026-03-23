@@ -37,6 +37,28 @@ function App() {
                 console.log("Error occured while deleting note");
             });
     }
+    function updateNote(noteId) {
+        const updatedFields = {};
+
+        if (title.trim() !== "") {
+            updatedFields.title = title;
+        }
+        
+        if (desc.trim() !== "") {
+            updatedFields.description = desc;
+        }
+        
+        axios
+        .patch(`http://localhost:3000/api/notes/${noteId}`, updatedFields)
+        .then(() => {
+            fetchNotes();
+            setTitle("");
+            setDesc("");
+            })
+            .catch(() => {
+                console.log("Error occured while updating note");
+            });
+    }
 
     function submitHandler(e) {
         e.preventDefault();
@@ -80,7 +102,14 @@ function App() {
                             <h1>{note.title}</h1>
                             <p>{note.description}</p>
                             <div className="note-buttons">
-                                <button className="update">Update</button>
+                                <button
+                                    className="update"
+                                    onClick={() => {
+                                        updateNote(note._id);
+                                    }}
+                                >
+                                    Update
+                                </button>
                                 <button
                                     className="delete"
                                     onClick={() => {

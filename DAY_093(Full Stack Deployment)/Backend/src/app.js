@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-// const path = require('path')
-// app.use(express.static('./public'))
+const path = require('path')
+app.use(express.static('./public'))
 const noteModel = require("./models/note.models");
 
 app.use(cors());
@@ -61,19 +61,19 @@ app.delete("/api/notes/:id", async (req, res) => {
  */
 
 app.patch("/api/notes/:id", async (req, res) => {
-    const id = req.params.id;
-
-    const { description } = req.body;
-    await noteModel.findByIdAndUpdate(id, { description });
+ 
+    await noteModel.findByIdAndUpdate(req.params.id,
+        req.body,
+        { new: true }); 
 
     res.status(200).json({
         message: "Note updated successfully",
     });
 });
 
-// app.use('*name', (req, res)=>{
-//     res.sendFile(path.join(__dirname, "..", '/public/index.html'));
+app.use('*name', (req, res)=>{
+    res.sendFile(path.join(__dirname, "..", '/public/index.html'));
     
-// })
+})
 
 module.exports = app;
