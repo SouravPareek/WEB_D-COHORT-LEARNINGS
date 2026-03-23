@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+// const path = require('path')
+// app.use(express.static('./public'))
 const noteModel = require("./models/note.models");
 
 app.use(cors());
@@ -68,5 +70,10 @@ app.patch("/api/notes/:id", async (req, res) => {
         message: "Note updated successfully",
     });
 });
+
+// app.use('*name', (req, res)=>{
+//     res.sendFile(path.join(__dirname, "..", '/public/index.html'));
+    
+// })
 
 module.exports = app;
