@@ -1,55 +1,56 @@
-const express = require("express")
-const cors = require("cors")
-const app = express()
-const noteModel = require('./models/note.models')
+const express = require("express");
+const cors = require("cors");
+const app = express();
+const noteModel = require("./models/note.models");
 
-app.use(cors())
-app.use(express.json())//middleware
+app.use(cors());
+app.use(express.json()); //middleware
 
 /**
  * POST /api/notes
  * create new mote and save data in mongodb
  * req.body - {title, description}
  */
-app.post('/api/notes', async (req, res)=>{
-    const {title, description} = req.body
-    
+app.post("/api/notes", async (req, res) => {
+    const { title, description } = req.body;
+
     const note = await noteModel.create({
-        title, description
-    })
+        title,
+        description,
+    });
 
     res.status(201).json({
         message: "Note created successfully",
-        note
-    })
-})
+        note,
+    });
+});
 
 /**
  * GET /api/notes
  * Fetch all the data from mongodb and send them in the response
  */
-app.get('/api/notes', async (req, res)=>{
-    const notes = await noteModel.find() //find() method returns data in form of array of objects.
+app.get("/api/notes", async (req, res) => {
+    const notes = await noteModel.find(); //find() method returns data in form of array of objects.
 
     res.status(201).json({
         message: "Notes fetched successfully",
-        notes
-    })
-})
+        notes,
+    });
+});
 
 /**
  * DELETE /api/notes/:id
  * Delete note with the id from req.params
  */
-app.delete('/api/notes/:id', async (req, res)=>{
+app.delete("/api/notes/:id", async (req, res) => {
     const id = req.params.id;
-    
-    await noteModel.findByIdAndDelete(id)
+
+    await noteModel.findByIdAndDelete(id);
 
     res.status(200).json({
-        message: "note deleted successfully"
-    })
-})
+        message: "note deleted successfully",
+    });
+});
 
 /**
  * Patch /api/notes/:id
@@ -57,15 +58,15 @@ app.delete('/api/notes/:id', async (req, res)=>{
  * req.body = {description}
  */
 
-app.patch('/api/notes/:id', async (req, res)=>{
-    const id = req.params.id
+app.patch("/api/notes/:id", async (req, res) => {
+    const id = req.params.id;
 
-    const {description} = req.body
-    await noteModel.findByIdAndUpdate(id, {description})
+    const { description } = req.body;
+    await noteModel.findByIdAndUpdate(id, { description });
 
     res.status(200).json({
-        message: "Note updated successfully"
-    })
-})
+        message: "Note updated successfully",
+    });
+});
 
-module.exports = app
+module.exports = app;
