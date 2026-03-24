@@ -10,13 +10,13 @@ function App() {
     console.log("integrating ");
 
     function fetchNotes() {
-        axios.get("http://localhost:3000/api/notes").then((res) => {
+        axios.get("https://web-d-cohort-learnings.onrender.com//api/notes").then((res) => {
             setnotes(res.data.notes);
         });
     }
     function postNote() {
         axios
-            .post("http://localhost:3000/api/notes", {
+            .post("https://web-d-cohort-learnings.onrender.com//api/notes", {
                 title: title,
                 description: desc,
             })
@@ -29,7 +29,7 @@ function App() {
     }
     function deleteNote(noteId) {
         axios
-            .delete("http://localhost:3000/api/notes/" + noteId)
+            .delete("https://web-d-cohort-learnings.onrender.com//api/notes/" + noteId)
             .then(() => {
                 fetchNotes();
             })
@@ -49,7 +49,7 @@ function App() {
         }
         
         axios
-        .patch(`http://localhost:3000/api/notes/${noteId}`, updatedFields)
+        .patch(`https://web-d-cohort-learnings.onrender.com//api/notes/${noteId}`, updatedFields)
         .then(() => {
             fetchNotes();
             setTitle("");
