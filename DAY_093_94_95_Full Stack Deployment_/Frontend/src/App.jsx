@@ -10,13 +10,13 @@ function App() {
     console.log("integrating ");
 
     function fetchNotes() {
-        axios.get("https://web-d-cohort-learnings.onrender.com//api/notes").then((res) => {
+        axios.get("https://web-d-cohort-learnings.onrender.com/api/notes").then((res) => {
             setnotes(res.data.notes);
         });
     }
     function postNote() {
         axios
-            .post("https://web-d-cohort-learnings.onrender.com//api/notes", {
+            .post("https://web-d-cohort-learnings.onrender.com/api/notes", {
                 title: title,
                 description: desc,
             })
@@ -29,7 +29,7 @@ function App() {
     }
     function deleteNote(noteId) {
         axios
-            .delete("https://web-d-cohort-learnings.onrender.com//api/notes/" + noteId)
+            .delete("https://web-d-cohort-learnings.onrender.com/api/notes/" + noteId)
             .then(() => {
                 fetchNotes();
             })
@@ -49,7 +49,7 @@ function App() {
         }
         
         axios
-        .patch(`https://web-d-cohort-learnings.onrender.com//api/notes/${noteId}`, updatedFields)
+        .patch(`https://web-d-cohort-learnings.onrender.com/api/notes/${noteId}`, updatedFields)
         .then(() => {
             fetchNotes();
             setTitle("");
@@ -98,7 +98,7 @@ function App() {
             <div className="notes">
                 {notes.map((note) => {
                     return (
-                        <div className="note">
+                        <div className="note" key={note._id}>
                             <h1>{note.title}</h1>
                             <p>{note.description}</p>
                             <div className="note-buttons">
