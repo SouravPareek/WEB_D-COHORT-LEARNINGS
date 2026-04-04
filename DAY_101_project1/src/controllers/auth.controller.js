@@ -44,7 +44,7 @@ async function registerController(req, res){
             bio: user.bio,
             profileImage: user.profileImage,
         },
-        token: "jwt_token_here",
+        token: token,
     });
 }
 
