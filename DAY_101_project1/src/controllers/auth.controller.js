@@ -29,6 +29,7 @@ async function registerController(req, res){
     const token = jsonwebtoken.sign(
         {
             id: user._id,
+            username: user.username
         },
         process.env.JWT_SECRET,
         { expiresIn: "1d" },
@@ -79,6 +80,7 @@ async function loginController(req, res){
     const token = jsonwebtoken.sign(
         {
             id: user._id,
+            username: user.username
         },
         process.env.JWT_SECRET,
         { expiresIn: "1d" },
