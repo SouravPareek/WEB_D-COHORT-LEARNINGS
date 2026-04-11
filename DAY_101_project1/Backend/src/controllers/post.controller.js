@@ -43,10 +43,10 @@ async function getPostController(req, res) {
 }
 
 async function getPostDetailsController(req, res) {
-    const userId = req.user.id;
-    const postId = req.params.postId;
+    const userid = req.user.id;
+    const postid = req.params.postid;
 
-    const post = await postModel.findById(postId);
+    const post = await postModel.findById(postid);
 
     if (!post) {
         return res.status(404).json({
@@ -54,7 +54,7 @@ async function getPostDetailsController(req, res) {
         });
     }
 
-    const isValidUser = post.user.toString() === userId;
+    const isValidUser = post.user.toString() === userid;
 
     if (!isValidUser) {
         return res.status(403).json({

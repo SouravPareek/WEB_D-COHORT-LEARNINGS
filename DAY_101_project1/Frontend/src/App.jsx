@@ -1,11 +1,14 @@
-import { RouterProvider } from "react-router"
-import AppRoutes from "./AppRoutes"
-import './style.scss'
+import { RouterProvider } from "react-router";
+import AppRoutes from "./AppRoutes";
+import "./style.scss";
+import { AuthProvider } from "./features/auth/auth.context";
 
 const App = () => {
-  return (
-    <AppRoutes/>
-  )
-}
+    return (
+        <AuthProvider>
+            <AppRoutes />
+        </AuthProvider>
+    )
+};
 
-export default App
+export default App;
