@@ -61,7 +61,7 @@ async function loginController(req, res){
                 email: email,
             },
         ],
-    });
+    }).select("+password")//as in schema password was marked as select:false, so we need to add password explicitly to use it for verification while logging in, if not then password will be undefined and thus an error will be returned
 
     if (!user) {
         return res.status(404).json({

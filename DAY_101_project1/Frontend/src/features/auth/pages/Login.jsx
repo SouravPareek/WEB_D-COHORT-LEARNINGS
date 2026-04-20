@@ -38,7 +38,7 @@ const Login = () => {
                         onInput={(e) => {
                             setUsername(e.target.value);
                         }}
-                        value={username}
+                        // value={username}
                     />
                     <input
                         type="password"
@@ -47,15 +47,15 @@ const Login = () => {
                         onInput={(e) => {
                             setPassword(e.target.value);
                         }}
-                        value={password}
+                        // value={password}
                     />
-                    <button type="submit">Login</button>
+                    <button className="button primary-button" type="submit">Login</button>
                 </form>
 
                 <p>
-                    Don't have an accout?{" "}
+                    Don't have an account?{" "}
                     <Link className="toggleAuthForm" to="/register">
-                        Register
+                        Create One.
                     </Link>
                 </p>
             </div>

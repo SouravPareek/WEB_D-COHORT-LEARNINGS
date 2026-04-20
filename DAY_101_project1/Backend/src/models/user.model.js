@@ -13,7 +13,8 @@ const userSchema = new mongoose.Schema({
     },
     password:{
         type: String,
-        required: [true, "Password is required"]
+        required: [true, "Password is required"],
+        select:false// now whenever users data is read from DB password will not be read
     },
     bio: String,
     profileImage:{

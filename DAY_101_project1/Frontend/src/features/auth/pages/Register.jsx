@@ -8,13 +8,19 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const {handleLogin} = useAuth()
+    const {handleRegister, loading} = useAuth()
     const navigate = useNavigate()
+
+    if(loading){
+        return (
+            <h1>Loading...</h1>
+        )
+    }
     
         async function handleSubmit(e) {
             e.preventDefault();
     
-            handleLogin(username, password)
+            handleRegister(username, email, password)
             .then(res=>{
                 console.log(res);
                 navigate("/login")
@@ -42,7 +48,7 @@ const Register = () => {
                         onInput={(e) => {
                             setEmail(e.target.value);
                         }}
-                        value={email}
+                        // value={email}
                     />
                     <input
                         type="password"
@@ -51,10 +57,10 @@ const Register = () => {
                         onInput={(e) => {
                             setPassword(e.target.value);
                         }}
-                        value={password}
+                        // value={password}
                     />
 
-                    <button type="submit">Login</button>
+                    <button className="button primary-button" type="submit">Login</button>
                 </form>
 
                 <p>
