@@ -33,6 +33,7 @@ postRouter.get("/details/:postid",  identifyUser, postController.getPostDetailsC
  */
 
 postRouter.post("/like/:postid", identifyUser, postController.likePostController)
+postRouter.post("/unlike/:postid", identifyUser, postController.unLikePostController)
 
 /**
  * @route GET /api/posts/feed

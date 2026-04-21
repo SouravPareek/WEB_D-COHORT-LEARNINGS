@@ -74,42 +74,67 @@ async function likePostController(req, res) {
 
     const post = await postModel.findById(postid);
 
-    if(!post){
+    if (!post) {
         return res.status(404).json({
-            message: "Post not found."
-        })
+            message: "Post not found.",
+        });
     }
 
     const like = await likeModel.create({
         post: postid,
-        user: username
-    })
+        user: username,
+    });
 
     res.status(201).json({
         message: "Post liked successfully",
-        like
+        like,
+    });
+}
+
+async function unLikePostController(req, res){
+    const {postid} = req.params
+    const username = req.user.username
+
+    const isLiked = await likeModel.findOne({
+        post: postid,
+        user: username
+    })
+
+    if(!isLiked){
+        return res.status(400).json({
+            message: "Post isn't liked"
+        })
+    }
+
+    await likeModel.findOneAndDelete({_id: isLiked._id})
+
+    return res.status(200).json({
+        message: "Post unliked successfully"
     })
 }
 
-async function getFeedController(req, res){
-    const user = req.user
-    
-    const posts = await Promise.all((await postModel.find().populate("user").lean())
-        .map(async (post) => {
-            const isLiked =  await likeModel.findOne({
-                user: user.username,
-                post: post._id
-            })
-            
-            post.isLiked = Boolean(isLiked)
+async function getFeedController(req, res) {
+    const user = req.user;
 
-            return post
-        }))
+    const posts = await Promise.all(
+        (
+            await postModel.find({}).populate("user").lean()
+        ).map(async (post) => {
+            const isLiked = await likeModel.findOne({
+                user: user.username,
+                post: post._id,
+            });
+
+            post.isLiked = Boolean(isLiked);
+
+            return post;
+        }),
+    );
 
     res.status(200).json({
         message: "Posts fetched successfully",
-        posts
-    }) 
+        posts,
+    });
 }
 
 module.exports = {
@@ -117,5 +142,6 @@ module.exports = {
     getPostController,
     getPostDetailsController,
     likePostController,
-    getFeedController
+    unLikePostController,
+    getFeedController,
 };
