@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../styles/feed.scss";
 import Post from "../components/Post"
-import { usePost } from "../hook/usePost";
+import { usePost } from "../hooks/usePost";
 import Nav from "../../shared/components/Nav";
 
 const Feed = () => {

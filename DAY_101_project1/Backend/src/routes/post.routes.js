@@ -10,7 +10,7 @@ const identifyUser = require('../middlewares/auth.middleware')
  * @route POST /api/posts [protected]
  * @description create a post with the content and image(optional) provided
  */
-postRouter.post("/", upload.single("image"), identifyUser, postController.createPostController)
+postRouter.post("/", upload.single("profileImage"), identifyUser, postController.createPostController)
 
 /**
  * @route GET /api/posts/ [protected]

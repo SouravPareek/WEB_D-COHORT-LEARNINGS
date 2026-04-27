@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "../styles/CreatePost.scss";
-import { usePost } from "../hook/usePost";
+import { usePost } from "../hooks/usePost";
 import { useNavigate } from "react-router";
 
 const CreatePost = () => {
@@ -16,10 +16,10 @@ const CreatePost = () => {
 
         const file = postImageInputFieldRef.current.files[0];
 
-        if (!file) {
-            alert("Please select an image");
-            return;
-        }
+        // if (!file) {
+        //     alert("Please select an image");
+        //     return;
+        // }
 
         await handleCreatePost(file, caption);
         navigate("/feed");

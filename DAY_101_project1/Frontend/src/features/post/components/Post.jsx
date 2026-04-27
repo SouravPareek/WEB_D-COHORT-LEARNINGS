@@ -1,16 +1,16 @@
 import React from "react";
-import { usePost } from "../hook/usePost";
+// import { usePost } from "../hooks/usePost";
 
 const Post = ({user, post, loading, handleLike, handleUnlike}) => {
     return (
         <div className="post">
             <div className="user">
                 <div className="img-wrapper">
-                    <img src={user.profileImage} />
+                    <img src={user.profileImage} alt=""/>
                 </div>
                 <p>{user.username}</p>
             </div>
-            <img src={post.imgUrl} />
+            <img src={post.imgUrl} alt=""/>
             <div className="icons">
                 <div className="left">
                     <button>

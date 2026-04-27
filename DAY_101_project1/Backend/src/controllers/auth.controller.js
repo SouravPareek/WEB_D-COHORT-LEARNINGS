@@ -1,7 +1,11 @@
 const userModel = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jsonwebtoken = require("jsonwebtoken");
+const { ImageKit, toFile } = require("@imagekit/nodejs");
 
+const imagekit = new ImageKit({
+    privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
+});
 
 async function registerController(req, res){
     const { username, email, password, bio, profileImage } = req.body;
@@ -18,13 +22,30 @@ async function registerController(req, res){
 
     const hash = await bcrypt.hash(password, 10)
 
-    const user = await userModel.create({
+    let imageUrl;
+
+    if (req.file) {
+        const file = await imagekit.files.upload({
+            file: await toFile(Buffer.from(req.file.buffer), "profile"),
+            fileName: "-profile",
+            folder: "cohort-2-insta-clone-profiles",
+        });
+
+        imageUrl = file.url;
+    }
+
+    const userData = {
         username,
         email,
         password: hash,
         bio,
-        profileImage,
-    });
+    };
+
+    if (imageUrl) {
+        userData.profileImage = imageUrl;
+    }
+
+    const user = await userModel.create(userData);
 
     const token = jsonwebtoken.sign(
         {
