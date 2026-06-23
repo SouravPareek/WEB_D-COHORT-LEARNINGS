@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: [true, "password is required"],
+        select: false //whenever we will try to read user data then this field will not be read, but if we need password anywhere then we can use => .select("+password")
     }
 })
 
