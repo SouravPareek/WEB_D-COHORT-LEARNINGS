@@ -1,11 +1,10 @@
-import React from 'react'
-import FaceTracker from './features/Expression/components/FaceExpression'
+import { RouterProvider} from "react-router"
+import { router } from "./app.routes"
+import "../src/features/shared/styles/global.scss"
 
 const App = () => {
   return (
-    <div>
-        <FaceTracker/>
-    </div>
+    <RouterProvider router={router}/>
   )
 }
 
