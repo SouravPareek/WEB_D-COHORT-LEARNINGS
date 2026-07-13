@@ -6,7 +6,7 @@ const Register = () => {
   return (
     <main className="register-page">
         <div className="form-container">
-            <h1>Login</h1>
+            <h1>Register</h1>
             <form>
                 <FormGroup label={"Name"} placeholder={"Enter your name"}/>
                 <FormGroup label={"Email"} placeholder={"Enter your email"}/>
