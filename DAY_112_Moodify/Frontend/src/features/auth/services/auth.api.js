@@ -21,8 +21,8 @@ export async function login({username, email, password}){
     return response.data
 }
 
-export function getMe(){
-    const response = api.get("/api/auth/get-me")
+export async function getMe(){
+    const response = await api.get("/api/auth/get-me")
     return response.data
 }
 
