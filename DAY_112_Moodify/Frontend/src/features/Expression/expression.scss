@@ -1,0 +1,26 @@
+.expressionbutton {
+    width: auto;
+    padding: 0.85rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 10px;
+    background: #ff7a3d;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    box-shadow: 0 6px 0 #e26421;
+    transition: all 0.1s ease;
+
+    &:hover {
+        background: #ff8b4d;
+    }
+
+    &:active {
+        transform: translateY(6px);
+        background: #eb6923;
+        box-shadow: 0 0 0 #f56b21;
+    }
+}

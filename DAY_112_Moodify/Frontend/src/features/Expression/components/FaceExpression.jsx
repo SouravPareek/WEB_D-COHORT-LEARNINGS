@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-import { detect, init } from "../utils/utils";
+import "../expression.scss"
+import { useEffect, useRef, useState } from "react"
+import { detect, init } from "../utils/utils"
 
 
 export default function FaceExpression({onClick = ()=>{}}) {
@@ -39,8 +40,10 @@ export default function FaceExpression({onClick = ()=>{}}) {
                 style={{ width: "400px", borderRadius: "12px" }}
                 playsInline
             />
-            <h2>{expression}</h2>
-            <button onClick={handleClick} >Detect Expression</button>
+            <h2>{expression.toUpperCase()}</h2>
+            <button onClick={handleClick} className="expressionbutton">
+                Detect Expression
+            </button>
         </div>
     );
 }
