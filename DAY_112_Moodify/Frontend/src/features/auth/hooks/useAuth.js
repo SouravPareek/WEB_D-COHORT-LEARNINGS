@@ -10,30 +10,45 @@ export const useAuth = ()=>{
 
     async function handleRegister({username, email, password}){
         setLoading(true)
-        const data = await register({username, email, password})
-        setUser(data.user)
-        setLoading(false)
+        try {
+            const data = await register({username, email, password})
+            setUser(data.user)
+        } finally {
+            setLoading(false)
+        }
     }
 
     async function handleLogin({username, email, password}){
         setLoading(true)
-        const data = await login({username, email, password})
-        setUser(data.user)
-        setLoading(false)
+        try {
+            const data = await login({username, email, password})
+            setUser(data.user)
+        } finally {
+            setLoading(false)
+        }
     }
 
     async function handleGetMe() {
         setLoading(true)
-        const data = await getMe()
-        setUser(data.user)
-        setLoading(false)
+        try {
+            const data = await getMe()
+            setUser(data?.user ?? null)
+        } catch (error) {
+            console.warn("Failed to fetch current user:", error?.response?.data?.message || error.message)
+            setUser(null)
+        } finally {
+            setLoading(false)
+        }
     }
 
     async function handleLogout() {
         setLoading(true)
-        const data = await logout()
-        setUser(null)
-        setLoading(false)
+        try {
+            await logout()
+        } finally {
+            setUser(null)
+            setLoading(false)
+        }
     }
 
     useEffect(()=>{

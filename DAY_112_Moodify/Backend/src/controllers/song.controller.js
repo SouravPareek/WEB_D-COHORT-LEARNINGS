@@ -37,9 +37,26 @@ async function uploadSong(req, res) {
 async function getSong(req, res){
     const {mood} = req.query
 
-    const song = await songModel.find({
+    if (!mood) {
+        return res.status(400).json({
+            message: "Mood is required.",
+            song: null
+        })
+    }
+
+    const songs = await songModel.find({
         mood
     })
+
+    if (!songs.length) {
+        return res.status(404).json({
+            message: "No song found for this mood.",
+            song: null
+        })
+    }
+
+    const randomIndex = Math.floor(Math.random() * songs.length)
+    const song = songs[randomIndex]
 
     res.status(200).json({
         message: "Song fetched successfully.",

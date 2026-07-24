@@ -20,7 +20,7 @@ export const init = async ({landmarkerRef, videoRef, streamRef, setExpression}) 
 };
 
 export const detect = ({landmarkerRef, videoRef, setExpression}) => {
-    if (!landmarkerRef.current || !videoRef.current) return;
+    if (!landmarkerRef.current || !videoRef.current) return "neutral";
     // if (videoRef.current.readyState < 2) {
     //     animationRef.current = requestAnimationFrame(detect);
     //     return;
@@ -39,15 +39,18 @@ export const detect = ({landmarkerRef, videoRef, setExpression}) => {
         const browUp = getScore("browInnerUp");
         const frownLeft = getScore("mouthFrownLeft");
         const frownRight = getScore("mouthFrownRight");
-        let currentExpression = "Neutral";
+        let currentExpression = "neutral";
         if (smileLeft > 0.5 && smileRight > 0.5) {
-            currentExpression = "Happy 😄";
-        } else if (jawOpen > 0.6 && browUp > 0.5) {
-            currentExpression = "Surprised 😲";
-        } else if (frownLeft > 0.01 && frownRight > 0.01) {
-            currentExpression = "Sad 😢";
+            currentExpression = "happy";
+        } else if (jawOpen > 0.5 && browUp > 0.5) {
+            currentExpression = "surprised";
+        } else if (frownLeft > 0.005 && frownRight > 0.005) {
+            currentExpression = "sad";
         }
         setExpression(currentExpression);
+
+        return currentExpression;
     }
-    // animationRef.current = requestAnimationFrame(detect);
+
+    return "neutral";
 };

@@ -1,8 +1,15 @@
 const userModel = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const blackListModel = require('../models/blacklist.model')
 const redis = require("../config/cache")
+
+const cookieOptions = {
+    httpOnly: true,
+    sameSite: "lax",
+    path: "/",
+    maxAge: 3 * 24 * 60 * 60 * 1000,
+    secure: process.env.NODE_ENV === "production",
+};
 
 async function registerUser(req, res) {
     const { username, email, password } = req.body;
@@ -36,7 +43,7 @@ async function registerUser(req, res) {
         },
     );
 
-    res.cookie("token", token);
+    res.cookie("token", token, cookieOptions);
 
     return res.status(201).json({
         message: "User registerd successfully",
@@ -80,7 +87,7 @@ async function loginUser(req, res) {
         },
     );
 
-    res.cookie("token", token);
+    res.cookie("token", token, cookieOptions);
 
     return res.status(200).json({
         message: "User logged in successfully",
@@ -104,9 +111,15 @@ async function getMe(req, res){
 async function logoutUser(req, res){
     const token = req.cookies.token
 
-    res.clearCookie("token")
-    
-    await redis.set(token, Date.now().toString())
+    res.clearCookie("token", { ...cookieOptions, maxAge: 0 })
+
+    if (token) {
+        try {
+            await redis.set(token, Date.now().toString(), "EX", 3 * 24 * 60 * 60);
+        } catch (error) {
+            console.warn("Failed to blacklist token during logout:", error.message);
+        }
+    }
 
     res.status(201).json({
         message: "logout successfully."
