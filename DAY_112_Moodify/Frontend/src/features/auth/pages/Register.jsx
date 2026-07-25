@@ -5,7 +5,7 @@ import { useAuth } from "../hooks/useAuth";
 import { useState } from "react";
 
 const Register = () => {
-    const {loading, handleRegister} = useAuth()
+    const {handleRegister} = useAuth()
 
     const navigate = useNavigate()
 
@@ -22,7 +22,7 @@ const Register = () => {
         <main className="register-page">
             <div className="form-container">
                 <h1>Register</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <FormGroup 
                         value={username}
                         onChange={(e)=>setUsername(e.target.value)}

@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { Navigate } from "react-router";
 
 const Protected = ({children}) => {
-    const {user, loading} = useAuth()
+    const {user, loading, handleGetMe} = useAuth()
+
+    useEffect(() => {
+        if (!user) {
+            handleGetMe()
+        }
+    }, [handleGetMe, user])
 
     if(loading){
         return <h1>Loading....</h1>
