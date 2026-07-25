@@ -34,16 +34,22 @@ export default function FaceExpression({onClick = ()=>{}}) {
         onClick(expression);
     }
     return (
-        <div style={{ textAlign: "center" }}>
-            <video
-                ref={videoRef}
-                style={{ width: "400px", borderRadius: "12px" }}
-                playsInline
-            />
-            <h2>{expression.toUpperCase()}</h2>
-            <button onClick={handleClick} className="expressionbutton">
-                Detect Expression
-            </button>
+        <div className="expression-card" style={{ textAlign: "center" }}>
+            <div className="expression-card__videoWrap">
+                <video
+                    ref={videoRef}
+                    style={{ width: "100%", maxWidth: "420px", borderRadius: "16px", background: "#111" }}
+                    playsInline
+                />
+            </div>
+            <div className="expression-card__info">
+                <p className="expression-card__label">Current mood</p>
+                <h2 className="expression-card__expression">{expression.toUpperCase()}</h2>
+                <p className="expression-card__hint">Tap the button below to detect your expression and start the soundtrack.</p>
+                <button onClick={handleClick} className="expressionbutton">
+                    Detect Expression
+                </button>
+            </div>
         </div>
     );
 }
