@@ -1,5 +1,6 @@
 {
     "javascript.preferences.organizeImports": {
         
-    }
+    },
+    "git.ignoreLimitWarning": true
 }
